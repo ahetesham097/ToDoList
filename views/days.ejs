@@ -9,19 +9,22 @@
 <body>
 
   
-        <h1 style="color:rgb(47, 14, 123);">This is <%= kindsOfDay %> !</h1>
+        <h1><%= kindsOfDay %></h1>
 
         <ul>
-            <li>Buy Food</li>
-            <li>Cook Food</li>
-            <li>Eat Food</li>
-            <li> <%= newListItem %> </li>
-            
+
+           <% for(var i=0; i<newListItems.length; i++){ %>
+            <li><%= newListItems[i] %></li>
+            <% } %>
+
         </ul>
+
         <form action="/" method="post">
-            <input type="text" name="newItem" >
+            <input type="text" name="newItem">
             <button type="submit">Add</button>
         </form>
+
+
 
     
 </body>

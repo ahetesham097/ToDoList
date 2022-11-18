@@ -1,10 +1,10 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const { urlencoded } = require("body-parser");
 
 const app = express();
 
-var item = "";
+var items = ["Buy Food","Cook Food"];
+
 
 
 app.set("view engine","ejs")
@@ -20,15 +20,14 @@ app.get("/", function(req, res){
         month:"long"
     }
     var day = today.toLocaleDateString("en-US",options);
-    res.render("days",{kindsOfDay:day, newListItem:item})
+    res.render("days",{kindsOfDay:day, newListItems:items});
 })
 
 app.post("/", function(req,res){
-
-   var item = req.body.newItem; 
-   res.redirect("/")
-   
-}) 
+var item = req.body.newItem;
+    items.push(item);
+    res.redirect("/");
+})
 
 app.listen(3000, function(){
     console.log("server Started");
